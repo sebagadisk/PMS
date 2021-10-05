@@ -1,2 +1,0 @@
-# PMS
-Project Management System
