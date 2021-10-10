@@ -1,5 +1,10 @@
 <?php
 
+use App\Http\Controllers\CompaniesController;
+use App\Http\Controllers\ProjectsController;
+use App\Http\Controllers\RolesController;
+use App\Http\Controllers\TasksController;
+use App\Http\Controllers\UsersController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -21,8 +26,8 @@ Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
-Route::resource('companies', 'CompaniesController');
-Route::resource('projects', 'ProjectsController');
-Route::resource('roles', 'RolesController');
-Route::resource('task', 'TasksController');
-Route::resource('users', 'UsersController');
+Route::resource('companies', CompaniesController::class);
+Route::resource('projects', ProjectsController::class);
+Route::resource('roles', RolesController::class);
+Route::resource('task', TasksController::class );
+Route::resource('users', UsersController::class);
