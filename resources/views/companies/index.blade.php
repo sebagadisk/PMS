@@ -1,3 +1,6 @@
+@extends('layouts.app')
+
+@section('content')
 <div class="panel panel-primary">
     <div class="panel-heading">List of Companies</div>
     <div class="panel-body">
@@ -11,3 +14,4 @@
         </ul>
     </div>
 </div>
+@endsection
