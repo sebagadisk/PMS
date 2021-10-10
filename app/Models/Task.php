@@ -39,6 +39,9 @@ class Task extends Model
         return $this->belongsTo('App\Models\Company');
     }
 
+    public function users(){
+        return $this->belongsToMany('App\Models\User');
+    }
 
 
 }
