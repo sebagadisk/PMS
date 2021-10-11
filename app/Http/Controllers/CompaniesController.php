@@ -52,8 +52,8 @@ class CompaniesController extends Controller
         //first way
         //$company = Company::where('id', $company->id)->first();
         //second way
-          $company = Company::find($company->id);
-        return view('companies.show',['company'=>$company]);
+        $company = Company::find($company->id);
+        return view('companies.show', ['company' => $company]);
     }
 
     /**
@@ -66,7 +66,7 @@ class CompaniesController extends Controller
     {
         //
         $company = Company::find($company->id);
-        return view('companies.edit',['company'=>$company]);
+        return view('companies.edit', ['company' => $company]);
     }
 
     /**
@@ -78,7 +78,18 @@ class CompaniesController extends Controller
      */
     public function update(Request $request, Company $company)
     {
-        //
+        //save data
+        $companyUpdate = Company::where('id', $company->id)
+            ->update([
+                'name' => $request->input('name'),
+                'description' => $request->input('description'),
+            ]);
+        if ($companyUpdate) {
+            return redirect()->route('companies.show', ['company' => $company->id])
+                ->with('success', 'Company updated successfully');
+        }
+        //redirect
+        return back()->withInput();
     }
 
     /**
