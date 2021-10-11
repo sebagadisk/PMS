@@ -89,7 +89,7 @@ class CompaniesController extends Controller
                 ->with('success', 'Company updated successfully');
         }
         //redirect
-        return back()->withInput();
+        return back()->withInput()->with('error', 'Something goes wrong');
     }
 
     /**
@@ -101,5 +101,13 @@ class CompaniesController extends Controller
     public function destroy(Company $company)
     {
         //
+//        dd($company);
+        $findCompany = Company::find($company->id);
+        if ($findCompany->delete()) {
+            //redirect
+            return redirect()->route('companies')->with('success', 'Company deleted successfully');
+        }
+        //go to the page we come from
+        return back()->withInput()->with('error', 'Something goes wrong');
     }
 }

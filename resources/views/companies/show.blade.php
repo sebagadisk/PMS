@@ -10,8 +10,21 @@
                         <p class="lead text-muted">{{ $company->description }}</p>
                         <p>
                             <a href="/companies/{{$company->id}}/edit" class="btn btn-dark">Edit</a>
-                            <a href="" class="btn btn-danger">Delete</a>
+                            <a href="#" class="btn btn-danger"
+                               onclick="
+                                        var result = confirm('Are you sure you wish to delete this company?');
+                                        if( result ){
+                                            event.preventDefault();
+                                            document.getElementById('delete-form').submit();
+                                        }
+                                        ">
+                                Delete
+                            </a>
                         </p>
+                        <form id="delete-form" action="{{ route('companies.destroy',[$company->id])}}" method="post">
+                            {{ csrf_field()}}
+                            <input type="hidden" name="_method" value="delete"/>
+                        </form>
                     </div>
                 </div>
             </section>
