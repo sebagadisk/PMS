@@ -1,36 +1,51 @@
 @extends('layouts.app')
 
 @section('content')
+    <br>
+    <br>
     <div class="row">
         <div class="col-md-8">
-
+            <form action="{{ route('companies.update',[$company->id]) }}" method="post">
+                {{ csrf_field()}}
+                <input type="hidden" name="_method" value="put"/>
+                <div class="form-group">
+                    <label for="company-name">Name<span class="required">*</span></label>
+                    <input id="company-name"
+                           name="name"
+                           spellcheck="false"
+                           placeholder="Enter Name"
+                           class="form-control"
+                           value="{{ $company->name }}"
+                           required>
+                </div>
+                <div class="form-group">
+                    <label for="company-context"></label>
+                    <textarea id="company-context"
+                              name="description"
+                              rows="5"
+                              spellcheck="false"
+                              placeholder="Enter description"
+                              class="form-control autosize-target text-left"
+                              style="resize: vertical">
+                        {{ $company->description }}
+                    </textarea>
+                </div>
+                <div class="form-group">
+                    <input class="btn btn-primary" type="submit" value="submit">
+                </div>
+            </form>
         </div>
 
         <div class="col-md-4">
             <br/><br/>
-            <div class="well">
-                <p class="lead">
-                    <strong>Search Project</strong>
-                </p>
-                <div class="row">
-                    <div class="col-lg-8">
-                        <input type="text" class="form-control searchInput">
-                    </div>
-                    <div class="col-lg-4 searchBtn">
-                        <button class="btn btn-dark btn-md">Search</button>
-                    </div>
-                </div>
-            </div>
-            <br/><br/>
             <!-- Project Members -->
             <div class="card">
                 <div class="card-header">
-                    <h4>Members</h4>
+                    <h4>Actions</h4>
                 </div>
                 <ul class="list-group list-group-flush">
-                    <li class="list-group-item"><a href="#">user1</a></li>
-                    <li class="list-group-item"><a href="#">user2</a></li>
-                    <li class="list-group-item"><a href="#">user3</a></li>
+                    <li class="list-group-item"><a href="/companies/{{ $company->id }}">View Company</a></li>
+                    <li class="list-group-item"><a href="/companies">All Companies</a></li>
                 </ul>
             </div>
             <br>
