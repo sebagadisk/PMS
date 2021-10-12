@@ -21,7 +21,7 @@
                                 Delete
                             </a>
                         </p>
-                        <form id="delete-form" action="{{ route('companies.destroy',[$company->id])}}" method="post">
+                        <form id="delete-form" action="{{ route('companies.destroy',[$company->id]) }}" method="post">
                             {{ csrf_field()}}
                             <input type="hidden" name="_method" value="delete"/>
                         </form>
