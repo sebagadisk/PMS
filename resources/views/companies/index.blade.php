@@ -9,9 +9,9 @@
             <a class="float-right btn btn-primary btn-sm" href="/companies/create">Create new company</a>
         </div>
         @foreach($companies as $company)
-        <ul class="list-group list-group-flush">
-            <li class="list-group-item"><a href="/companies/{{ $company->id }}">{{ $company->name }}</a></li>
-        </ul>
+            <ul class="list-group list-group-flush">
+                <li class="list-group-item"><a href="/companies/{{ $company->id }}">{{ $company->name }}</a></li>
+            </ul>
         @endforeach
     </div>
 
